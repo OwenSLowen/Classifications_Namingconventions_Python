@@ -55,15 +55,16 @@ def automate_function(
     ]
     count = len(objects_with_forbidden_speckle_type)
 
-    from openpyxl import Workbook
+    import pandas as pd
 
-    workbook = Workbook()
-    sheet = workbook.active
+    # Read the Excel file
+    df = pd.read_excel('input_file.xlsx')
 
-    sheet["A1"] = "hello"
-    sheet["B1"] = "world!"
+    # Perform some operation (e.g., create a new column)
+    df['new_column'] = df['old_column'] * 2
 
-    workbook.save(filename="hello_world.xlsx")
+    # Save the modified DataFrame to a new Excel file
+    df.to_excel('output_file.xlsx', index=False)
 
     if count > 0:
         # this is how a run is marked with a failure cause

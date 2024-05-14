@@ -55,6 +55,15 @@ def automate_function(
     ]
     count = len(objects_with_forbidden_speckle_type)
 
+from openpyxl import Workbook
+
+workbook = Workbook()
+sheet = workbook.active
+
+sheet["A1"] = "hello"
+sheet["B1"] = "world!"
+
+workbook.save(filename="hello_world.xlsx")
     if count > 0:
         # this is how a run is marked with a failure cause
         automate_context.attach_error_to_objects(
